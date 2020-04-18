@@ -1,0 +1,22 @@
+{% load custom_tags_filters %}
+<div>	
+	<div class="w3-panel w3-pale-red w3-text-red">
+		{% for error in form.non_field_errors %}
+			{{ error }}
+		{% endfor %}
+	</div>
+	{% for field in form %}
+		{{ field.label_tag }}
+		{% if form.is_bound %}
+			{% if field.errors %}
+				{% for error in field.errors %}
+					<b class="w3-text-red">{{ error }}</b>
+				{% endfor %}
+			{% endif %}
+		{% endif %}
+		<div class="{{ field|red_border_if_error_filter }}" >
+			{{ field }}
+		</div>
+		<small class='w3-text-dark-grey'>{{ field.help_text }}</small>
+	{% endfor %}
+</div>

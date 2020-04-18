@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Reply Post {% endblock %}
+
+{% block breadcrumb_navigation %} 
+	<a href="{% url 'home_url' %}" class="w3-bar-item w3-button w3 w3-round-large" >Boards</a>
+	<span class="w3-bar-item">/</span>
+	<a href="{% url 'board_topics_url' board.id %}" class="w3-bar-item w3-button w3-round-large" >{{ board.name }}</a>
+	<span class="w3-bar-item">/</span>
+	<a href="{% url 'topic_page_url' board_id=board.id topic_id=topic.id %}" class="w3-bar-item w3-button w3-round-large" >{{ topic.subject }}</a>
+	<span class="w3-bar-item">/</span>
+	<a href="{% url 'topic_reply_url' board_id=board.id topic_id=topic.id %}" class="w3-bar-item w3-button w3-round-large w3-green" >Reply</a>
+	<span class="w3-bar-item">/</span>
+{% endblock breadcrumb_navigation %}
+
+{% block content %}
+	<div class="w3-card-4 w3-light-grey ">
+		<div class="w3-container w3-dark-grey"> <h4>Reply to - {{ topic.subject }}</h4> </div>
+		<form method="post" class="w3-form-element " novalidate>
+			{% csrf_token %}
+			{{ form.media }}
+			{% include 'form_template.html' %}
+			<button type="submit" class="w3-button w3-green w3-round w3-wide" >Reply to post</button>
+		</form>
+	</div>
+{% endblock content %}

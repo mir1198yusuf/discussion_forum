@@ -1,0 +1,53 @@
+{% load custom_tags_filters %}
+<div class="w3-bar w3-light-grey w3-center w3-round-large w3-align-center-50">
+	{# objects passed to template are : paginator, page_obj, is_paginated, object_list #}
+	{# since paginator.page_range is range(start,stop,step) #}
+	{% if is_paginated %}
+		{# logic for first #}
+		{% if page_obj.number == 1 %}
+			<a class="w3-button w3-round-large w3-border w3-border-green w3-disabled">first</a>
+		{% else %}
+			<a href="?page=1" class="w3-button w3-round-large w3-border w3-border-green">first</a>
+		{% endif %}
+		{# logic for previous #}
+		{% if page_obj.has_previous %}
+			<a href="?page={{ page_obj.previous_page_number }}" class="w3-button w3-round-large w3-border w3-border-green">previous</a>
+		{% else %}
+			<a class="w3-button w3-round-large w3-border w3-border-green w3-disabled">previous</a>
+		{% endif %}
+		{# logic for middle links #}
+		{% if paginator.num_pages <= 3 %}
+			{% for pageno in paginator.page_range %}
+				{% if page_obj.number == pageno %}
+					<a href="?page={{ pageno }}" class="w3-button w3-round-large w3-green">{{ pageno }}</a>
+				{% else %}
+					<a href="?page={{ pageno }}" class="w3-button w3-round-large">{{ pageno }}</a>
+				{% endif %}
+			{% endfor %}
+		{% else %}
+			{# for no of pages >3, the logic is written in template tag #}
+			{% get_pagination_values_3 as pagination_list %}
+			{% for pageno in pagination_list %}
+				{% if page_obj.number == pageno %}
+					<a href="?page={{ pageno }}" class="w3-button w3-round-large w3-green">{{ pageno }}</a>
+				{% else %}
+					<a href="?page={{ pageno }}" class="w3-button w3-round-large">{{ pageno }}</a>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+		{# logic for next #}
+		{% if page_obj.has_next %}
+			<a href="?page={{ page_obj.next_page_number }}" class="w3-button w3-round-large w3-border w3-border-green">next</a>
+		{% else %}
+			<a class="w3-button w3-round-large w3-border w3-border-green w3-disabled">next</a>
+		{% endif %}
+		{# logic for last #}
+		{% if page_obj.number == paginator.num_pages %}
+			<a class="w3-button w3-round-large w3-border w3-border-green w3-disabled">last</a>
+		{% else %}
+			<a href="?page={{ paginator.num_pages }}" class="w3-button w3-round-large w3-border w3-border-green">last</a>
+		{% endif %}
+	{% endif %}
+</div>
+
+

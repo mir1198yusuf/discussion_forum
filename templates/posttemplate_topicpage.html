@@ -1,0 +1,34 @@
+{% load static %}
+{% load humanize %}
+{% load custom_tags_filters %}
+<div id={{ post.id }} class="w3-card-2 w3-light-grey w3-margin">
+	<div class="w3-panel w3-leftbar w3-border-dark-grey">
+		{% if forloop.first %}
+			<div class="w3-panel w3-center w3-dark-grey">
+				{{ topic.subject }}
+			</div>
+		{% endif %}
+		<div  class="w3-inline-block w3-vertical-align-top" style="width:10%;">
+			<div class="w3-padding w3-center">
+				<img src="{{ post.created_by|gravatar_url }}" alt="{{ post.created_by.username }}" class="w3-circle" >
+			</div>
+			<small class="w3-padding w3-text-green">Posts: {{ post.created_by.posts.count }}</small>
+		</div><!-- comment added for inline-block : https://css-tricks.com/fighting-the-space-between-inline-block-elements/
+	---><div class="w3-inline-block " style="width:90%;">
+			<div class="w3-panel w3-light-grey">
+				<div class="w3-inline-block w3-vertical-align-top" style="width:33%;"><b class="w3-text-green">{{ post.created_by }}</b></div><!-- comment for inline-block
+			---><div class="w3-inline-block w3-vertical-align-top" style="width:33%;"><i class="w3-text-green">Created: {{ post.created_on|naturaltime }}</i></div><!-- comment for inline-block
+			---><div class="w3-inline-block w3-vertical-align-top" style="width:33%;"><i class="w3-text-green w3-right">Updated: {{ post.updated_on|naturaltime }}</i></div>
+			</div>
+			<div class="w3-padding">
+				{{ post.get_message_as_markdown }}
+				{% if post.created_by == request.user %}
+					<div>
+						<a href="{% url 'post_edit_url' board_id=board.id topic_id=topic.id post_id=post.id %}" class="w3-button w3-green w3-round-large w3-small w3-margin-top">Edit</a>	
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+

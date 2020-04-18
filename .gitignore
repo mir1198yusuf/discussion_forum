@@ -1,0 +1,8 @@
+#Django ignore
+*.sqlite3
+__pycache__
+*.log
+*.pot
+*.pyc
+create_dummydata.py
+.env

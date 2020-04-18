@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+<! not using title  as using default value of base.html>
+
+{% block breadcrumb_navigation %}
+	<a href="{% url 'home_url' %}" class="w3-bar-item w3-button w3-green w3-round-large" >Boards</a>
+	<span class="w3-bar-item">/</span>
+{% endblock %}
+
+{% block content %}
+	<table class="w3-section w3-table-all w3-centered w3-card-4">
+		<tr class="w3-dark-grey">
+			<th>Boards</th>
+			<th>Topics</th>
+			<th>Posts</th>
+			<th>Last updated</th>
+		</tr>
+		{% for board in boards %}
+			<tr>
+				<td>
+					<a href="{% url 'board_topics_url' board.id %}" class="w3-text-green">{{ board.name }}</a> <br>
+					<small>{{ board.description }}</small>
+				</td>
+				<td>{{ board.topics.count }}</td>
+				<td>{{ board.posts_count }}</td>
+				<td>{{ board.lastupdated_on|naturaltime }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

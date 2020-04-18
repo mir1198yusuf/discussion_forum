@@ -1,0 +1,35 @@
+{% load static %}<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block title %}Forum{% endblock title %}</title>
+		<link rel="stylesheet" href="{% static 'css/w3.css' %}" >	<! for all styling >
+	</head>
+	<body>
+		<div class="w3-padding w3-dark-grey w3-center" >
+			<h1 class="w3-text-green w3-wide w3-inline-block">Discussion Forum</h1>
+			{% block account %}
+				{% if user.is_authenticated %}
+					<div class="w3-dropdown-hover w3-margin-right w3-right w3-inline-block" >
+						<button class="w3-green w3-button w3-round-large">{{ user.username }}</button>
+						<div class="w3-dropdown-content w3-bar-block w3-dark-grey" style="right: 0;">
+							<a href="{% url 'myprofile_update_url' %}" class="w3-bar-item w3-button w3-text-white">My account</a>
+							<a href="{% url 'password_change_url' %}" class="w3-bar-item w3-button w3-text-white">Change password</a>
+							<a href="{% url 'logout_url' %}" class="w3-bar-item w3-button w3-text-white">Logout</a>
+						</div>
+					</div>
+				{% else %}
+					<a href="{% url 'signup_url' %}" class="w3-inline-block w3-right w3-button w3-round-large w3-green">Sign Up</a>
+					<a href="{% url 'login_url' %}" class="w3-inline-block w3-right w3-button w3-dark-grey w3-border w3-border-green w3-round-large w3-margin-right">Log In</a>
+				{% endif %}
+			{% endblock account %}
+		</div>
+		<div class="w3-margin w3-container ">	
+			<div class="w3-section w3-bar w3-light-grey w3-round-large">
+				{% block breadcrumb_navigation %} {% endblock breadcrumb_navigation %}
+			</div>
+			{% block content %}	{% endblock content %}
+			{% block pagination %} {% include 'pagination.html' %}	{% endblock pagination %}
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}
+	{{ board.name }} - {{ block.super }}
+{% endblock %}
+
+{% block breadcrumb_navigation %}
+	<a href="{% url 'home_url' %}" class="w3-bar-item w3-button w3 w3-round-large" >Boards</a>
+	<span class="w3-bar-item">/</span>
+	<a href="{% url 'board_topics_url' board.id %}" class="w3-bar-item w3-button w3-green w3-round-large" >{{ board.name }}</a>
+	<span class="w3-bar-item">/</span>
+{% endblock %}
+	
+{% block content %}
+	<a href="{% url 'new_topic_url' board.id %}" class="w3-button w3-green w3-round-large" >New Topic</a>
+	<table class="w3-section w3-table-all w3-centered w3-card-4">
+		<tr class="w3-dark-grey">
+			<th>Topics</th>
+			<th>Replies</th>
+			<th>Views</th>
+			<th>Starter</th>
+			<th>Created</th>
+			<th>Last updated</th>
+		</tr>
+		{% for topic in topics %}
+		<tr>
+			<td> <a href="{% url 'topic_page_url' board_id=board.id topic_id=topic.id %}" class="w3-text-green">{{ topic.subject }} </a> </td>	
+			<td>{{ topic.replies_count }}</td>
+			<td>{{ topic.views }}</td>
+			<td>{{ topic.created_by }}</td>
+			<td>{{ topic.created_on|naturaltime }}</td>
+			<td>{{ topic.lastupdated_on|naturaltime }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}
+
