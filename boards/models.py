@@ -17,7 +17,7 @@ class Board(models.Model):
 		return self.name
 
 class Topic(models.Model):
-	subject = models.CharField(max_length=300, unique=True)
+	subject = models.CharField(max_length=255, unique=True)
 	board = models.ForeignKey(Board, on_delete=models.SET_NULL, related_name='topics', null=True)
 	created_by = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='topics', null=True)
 	created_on = models.DateTimeField(auto_now_add=True)	
