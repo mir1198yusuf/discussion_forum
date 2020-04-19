@@ -152,11 +152,15 @@ LOGIN_REDIRECT_URL = 'home_url'
 #login url name for login required stuff
 LOGIN_URL = 'login_url'
 
-#email backend for development - console backend
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-#default sender email 
-DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+#email settings 
+EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST = config('EMAIL_HOST', default='localhost')  #default as in docs
+EMAIL_PORT = config('EMAIL_PORT', default=25, cast=int)    #same
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='') #same
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='') #same
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)   #same
+DEFAULT_FROM_EMAIL = 'Forum <noreply@discussionforum.com>'
+EMAIL_SUBJECT_PREFIX = '[Forum] ' 
 
 #media root where all uploaded files will be stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
