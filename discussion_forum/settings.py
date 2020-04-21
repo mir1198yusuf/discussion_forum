@@ -159,8 +159,7 @@ EMAIL_PORT = config('EMAIL_PORT', default=25, cast=int)    #same
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='') #same
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='') #same
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)   #same
-DEFAULT_FROM_EMAIL = 'Forum <noreply@discussionforum.com>'
-EMAIL_SUBJECT_PREFIX = '[Forum] ' 
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='webmaster@localhost' ) #django default
 
 #media root where all uploaded files will be stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
@@ -172,3 +171,6 @@ MEDIA_URL = '/media/'
 BOARD_PAGINATE_BY = 4
 TOPIC_PAGINATE_BY = 4
 POST_PAGINATE_BY = 4
+
+#sendgrid api key
+SENDGRID_API_KEY = config('SENDGRID_API_KEY', default='')

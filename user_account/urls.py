@@ -11,11 +11,7 @@ urlpatterns = [
 					template_name='passwordchangepage.html', 
 					success_url=reverse_lazy('password_change_done_url')), name='password_change_url'),
     path('changepassword/done/', django_auth_views.PasswordChangeDoneView.as_view(template_name='passwordchangepagedone.html'), name='password_change_done_url'),
-    path('passwordreset/', django_auth_views.PasswordResetView.as_view(
-    				template_name='passwordresetpage.html', 
-    				email_template_name='passwordresetemailtemplate.html', 
-    				subject_template_name='passwordresetsubject.txt',
-    				success_url=reverse_lazy('password_reset_sent_url')), name='password_reset_url'),	#enter email to get reset link
+    path('passwordreset/', user_account.views.NewPasswordReset_View.as_view(), name='password_reset_url'),	#enter email to get reset link
     path('passwordreset/sent/', django_auth_views.PasswordResetDoneView.as_view(template_name='passwordresetsentpage.html'), name='password_reset_sent_url'),	#ack that reset link sent to email
     path('passwordreset/<uidb64>/<token>/', django_auth_views.PasswordResetConfirmView.as_view(
     				template_name='passwordresetupdatepage.html',

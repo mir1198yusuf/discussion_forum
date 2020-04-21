@@ -5,6 +5,7 @@ from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
 from django.core import mail
 from discussion_forum.settings import DEFAULT_FROM_EMAIL
+from user_account.views import NewPasswordReset_View
 
 class PasswordReset_Test(TestCase):
 
@@ -40,7 +41,7 @@ class PasswordReset_Test(TestCase):
 		response = self.client.get(self.passwordreseturl)
 		self.assertEqual(response.status_code, 200)
 		self.assertEqual(self.resolveresult.url_name, 'password_reset_url')
-		self.assertEqual(self.resolveresult.func.__name__, PasswordResetView.as_view().__name__)
+		self.assertEqual(self.resolveresult.func.__name__, NewPasswordReset_View.as_view().__name__)
 
 	def test_2(self):
 		response = self.client.get(self.passwordreseturl)
@@ -84,6 +85,7 @@ class PasswordReset_Test(TestCase):
 		#get first instance from outbox
 		reset_email = mail.outbox[0]
 		#check subject of reset_email
+		#THIS BELOW IS FOR CONSOLE EMAIL BACKEND
 		self.assertEqual('[Discussion Forum] Please reset your password', reset_email.subject)
 		#check reset_email sender
 		self.assertEqual(DEFAULT_FROM_EMAIL,reset_email.from_email)
