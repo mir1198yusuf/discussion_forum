@@ -1,0 +1,121 @@
+Deploying django application on PythonAnywhere
+
+PA gives one free app hosting for free accounts
+
+sign up on PA
+
+web tab > new > manual config > **
+
+console tab > new console
+
+create virtual env - https://help.pythonanywhere.com/pages/Virtualenvs/ - (use their wrapper commands) - use Python 3.5
+
+once venv activated, 
+
+git clone repo
+
+go in directory where requirements file stored
+
+pip install -r requirements.txt
+
+** > on web tab, source code dir - add full path till last as manage.py parent
+
+venv dir - add full path till venv name
+
+fullpath obtained by pwd command
+
+web tab > static files url - same as STATIC_URL
+
+static file dir - full path of STATIC_ROOT
+
+remember static root folder will be auto created by collectstatic - dont run now
+
+force https - enable it
+
+Help links :
+https://medium.com/@fotios.floros/upload-existing-project-to-python-anywhere-4e0dcb7fb739
+https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
+https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/ - very nice
+https://medium.com/@AmaanPengoo/uploading-django-to-pythonanywhere-bf4990ae47cc
+
+database tab > enter password > create db & dont set password again because we already setted it
+
+one 'default' named db already created for each user, in above step you are expected to create new one
+
+create .env file in folder of manage.py
+add all values required
+
+.localhost in allowed_host will allow all subdomains of localhost i.e. www.localhost or www.abc.localhost etc
+
+for mysql use this as said in dj_database_url library on github
+mysql://USER:PASSWORD@HOST:PORT/NAMExxxxxxxx >>> xxxx->strictmode options
+
+help link :
+https://stackoverflow.com/questions/46441487/django-mysql-strict-mode-with-database-url-in-settings
+https://docs.djangoproject.com/en/2.2/ref/databases/#mysql-sql-mode
+
+DB host or host address, username can be obtained from database tab
+
+python manage.py makemigrations
+
+if mysqlclient error install- pip install mysqlclient
+
+note : MySQL does not allow unique CharFields to have a max_length > 255
+
+help : https://help.pythonanywhere.com/pages/UsingMySQL/
+
+create superuser in console
+
+on PA, dont use starting dot because PA could not give https for every subdomain.. it gives only for username.pythonanywhere.com, so better not use . in PA
+
+Sendgrid :
+domain authentication/whitelabel means : sendgrid will displayed mail as if you have the server else "from@gmail.com sent via senrid.net" will be displayed
+
+if whitelabelled John doe john@doe.com will be displayed - used for example
+
+steps :
+create account on SG >  fill survey > 
+
+use single sender option  not domain authentication since we did not but domain
+
+create sender - add your details company as self-learning or N/A
+
+verification of sender by email on from_email 
+
+make from_email and reply_email same for dev uses
+ 
+setting > api key > create api >
+enter name + full access 
+save the api key
+
+from_email in SG and django settings should be same
+
+no need to verify integration on SG - just create sender and api
+
+for SG smtp (here we used SG API but still for ref.), you will get all details like email host,port,tls etc from SG 
+
+Dont commit your static_root folder to repo
+
+
+help link : (smtp and api both)
+https://sendgrid.com/docs/for-developers/sending-email/django/
+https://medium.com/@jakesh.bohaju/django-password-reset-email-in-pythonanywhere-f51ce86037ca
+https://simpleisbetterthancomplex.com/tutorial/2016/06/13/how-to-send-email.html
+https://stackoverflow.com/questions/6367014/how-to-send-email-via-django
+
+
+for PA , only gmail smtp will work, SG and other smtp will not - for free accounts
+
+so for free account use SG API
+
+https://help.pythonanywhere.com/pages/SMTPForFreeUsers/
+https://www.pythonanywhere.com/forums/topic/54/
+
+
+
+
+
+
+
+
+
