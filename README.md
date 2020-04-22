@@ -35,6 +35,7 @@ This sample application contains limited features and therefore can be updated t
 - markdown - Python library for markdown
 - django-mdeditor - Python library for markdown editor
 - python-decouple - Python library for separating secret setting parameters of project from source code
+- dj_database_url - Python library to simplify database connection values
 - sendgrid - Python library for free email service using Sendgrid API
 - PythonAnywhere - for deployment of django application
 - Sublime Text Editor - for writing code
