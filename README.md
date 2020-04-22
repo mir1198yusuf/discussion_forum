@@ -1,4 +1,4 @@
-#Sample Web discussion forum built in Django - CRUD (Create Read Update Delete) database operations
+# Sample Web discussion forum built in Django - CRUD (Create Read Update Delete) database operations
 
 
 I created this while learning Django from this tutorial : [SimpleIsBetterThanComplex](https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/)
@@ -8,7 +8,7 @@ I created this while learning Django from this tutorial : [SimpleIsBetterThanCom
 This sample application contains limited features and therefore can be updated to include new ones.*
 
 
-##Brief description of project:
+## Brief description of project:
 
 -Only admin users can create new Boards.
 -Users can ask queries by starting topics under existing boards.
@@ -17,7 +17,7 @@ This sample application contains limited features and therefore can be updated t
 (You can consider Python as a Board and all queries regarding Python can be asked by starting topics)
 
 
-##Functionalities included in project:
+## Functionalities included in project:
 
 -User signup
 -User login
@@ -27,7 +27,7 @@ This sample application contains limited features and therefore can be updated t
 -Posting replies to topic
 -Markdown editor for post message
 
-##Tools and technologies :
+## Tools and technologies :
 
 -Django - Python framework for web application
 -HTML - for creating django webpage templates
