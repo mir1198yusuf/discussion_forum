@@ -95,6 +95,8 @@ class TopicPage_View(ListView):
 	template_name = 'topicpage.html'
 
 	def dispatch(self,request, *args, **kwargs):
+		#self.kwargs is the values in url. stays throughout the class
+		#though kwargs==self.kwargs , kwargs is self.kwargs False
 		self.board = get_object_or_404(Board, id=self.kwargs.get('board_id'))
 		self.topic = get_object_or_404(Topic, id=self.kwargs.get('topic_id'))
 		#create session key for topic view - to increase views of topic only once per user per session
