@@ -37,7 +37,7 @@ This sample application contains limited features and therefore can be updated t
 - python-decouple - Python library for separating secret setting parameters of project from source code
 - dj_database_url - Python library to simplify database connection values
 - sendgrid - Python library for free email service using Sendgrid API
-- PythonAnywhere - for deployment of django application
+- PythonAnywhere - for deployment of django application, serving static & media files
 - Sublime Text Editor - for writing code
 - Git - for version control
 
