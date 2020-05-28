@@ -113,7 +113,11 @@ https://www.pythonanywhere.com/forums/topic/54/
 
 
 
+to serve media files (user uploaded like media_root) use same approach as static_url
 
+PA- Web- static- add 2nd row after static_url row
+url - media_url value
+path - media_root value
 
 
 

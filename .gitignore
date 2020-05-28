@@ -8,3 +8,5 @@ create_dummydata.py
 .env
 #static_root folder
 staticroot
+#media root folder
+uploads
