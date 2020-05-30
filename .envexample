@@ -1,4 +1,6 @@
-#this is an example of .env file. use .env extension not this file's .envexample extension
+#rename this file to .env
+#the production .env file is different from this
+#this file just an example file for actual .env
 
 SECRET_KEY = s3cr3t_key_of_django
 
