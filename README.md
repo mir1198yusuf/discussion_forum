@@ -58,6 +58,6 @@ This sample application contains limited features and therefore can be updated t
 
 ## Live demo site
 
-The project is live at [site](bit.ly/forum_live)
+The project is live at [site](http://bit.ly/forum_live)
 
 
