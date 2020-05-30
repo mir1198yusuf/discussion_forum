@@ -5,7 +5,7 @@ __pycache__
 *.pot
 *.pyc
 create_dummydata.py
-.env
+.envexample
 #static_root folder
 staticroot
 #media root folder
