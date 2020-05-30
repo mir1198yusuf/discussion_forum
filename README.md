@@ -41,6 +41,23 @@ This sample application contains limited features and therefore can be updated t
 - Sublime Text Editor - for writing code
 - Git - for version control
 
+## How to run this project :
+
+0. Make sure you have Python 3, Git and virtualenv library installed
+1. Create a directory - `forum_folder`
+2. Inside `forum_folder`, create virtual environment using `virtualenv menv`
+3. Activate virtualenv by going in `menv`>`Scripts`> run `activate`. `menv` is now activated in shell or cmd prompt.
+4. Inside `forum_folder`, run `git clone https://github.com/mir1198yusuf/discussion_forum`
+5. Navigate to newly created folder `discussion_forum`, run `pip install -r requirements.txt`
+6. Generate Django secret key for project. Run `python generate_secret_key.py` and copy the output string
+7. Paste it in `.env` file at `YOUR_SECRET_KEY`
+8. Run `python manage.py migrate` to apply database migrations.
+9. Create a user `python manage.py createsuperuser`
+10. Finally start the project - `python manage.py runserver`
+11. Go to the link displayed in shell/cmd prompt to view site. 
+
+## Live demo site
+
 The project is live at [site](https://mir1198yusuf.pythonanywhere.com/)
 
 
