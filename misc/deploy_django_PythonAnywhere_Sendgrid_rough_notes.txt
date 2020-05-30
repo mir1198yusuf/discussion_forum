@@ -30,6 +30,8 @@ static file dir - full path of STATIC_ROOT
 
 remember static root folder will be auto created by collectstatic - dont run now
 
+wsgi file edit - do as on web tab
+
 force https - enable it
 
 Help links :
