@@ -10,3 +10,5 @@ create_dummydata.py
 staticroot
 #media root folder
 uploads
+#secret key file for dev
+dev_secret.txt
