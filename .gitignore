@@ -7,8 +7,8 @@ __pycache__
 create_dummydata.py
 .envexample
 #static_root folder
-staticroot
+staticroot/
 #media root folder
-uploads
+uploads/
 #secret key file for dev
 dev_secret.txt
